@@ -52,7 +52,50 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100.0,
+                child: Text('自定义插件库'),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 30.0),
+                child: InkWell(
+                  onTap: () {
+                    Zjad.showRewardVideoAd(
+                      "zjad_3091624125775544",
+                      onZjAdTradeId:(String id){
+                        print("RewardVideoAd onZjAdTradeId");
+                      },
+                      onZjAdLoaded: (String id) {
+                        print("RewardVideoAd onZjAdLoad");
+                      },
+                      onZjAdShow: (String id) {
+                        print("RewardVideoAd onZjAdShow");
+                      },
+                      onZjAdReward: (String id) {
+                        print("RewardVideoAd onReward");
+                      },
+                      onZjAdClick: (String id) {
+                        print("RewardVideoAd onZjAdClick");
+                      },
+                      onZjAdVideoComplete: (String id) {
+                        print("RewardVideoAd onVideoComplete");
+                      },
+                      onZjAdClose: (String id) {
+                        print("RewardVideoAd onZjAdClose");
+                      },
+                      onZjAdError: (String id, int code, String message) {
+                        print("RewardVideoAd onZjAdError");
+                      }
+                    );
+                  },
+                  child: Text('加载激励视频'),
+                ),
+              ),
+              Text('Running on: $_platformVersion\n')
+            ],
+          ),
         ),
       ),
     );
